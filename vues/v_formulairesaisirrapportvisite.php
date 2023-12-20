@@ -38,7 +38,7 @@
                                           
                         <tr>
                             <td>
-                                <select required name="praticien" class="form-select mt-3">
+                                <select name="praticien" class="form-select mt-3">
                                 <option value class="text-center">- Praticien concerné -</option>
                                 <?php
                                     foreach ($pra as $praticien) {
@@ -69,7 +69,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <select required name="remplacant" class="form-select mt-3">
+                                <select id="remplacantcontent" name="remplacant" class="form-select mt-3">
                                 <option value class="text-center">- Remplaçant -</option>
                                 <?php
                                     foreach ($pra as $praticien) {
@@ -81,7 +81,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <select required name="motif" class="form-select mt-3">
+                                <select name="motif" class="form-select mt-3">
                                 <option value class="text-center">- Motif concerné -</option>
                                 <?php
                                     foreach ($mot as $motif) {
@@ -98,7 +98,7 @@
                                 <div>
                                     <label for="scales">Autre motif ?</label>
                                     <input class="form-check-input" type="checkbox" id="autremotif" name="autremotif" />
-                                    <input type="text" id="autremotifcontent" name="autremotifcontent"  />
+                                    <input class="d-none" type="text" id="autremotifcontent" name="autremotifcontent"  />
                                 </div>
                             </fieldset><br>
                             </td>
@@ -108,7 +108,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <select required name="med1" class="form-select mt-3">
+                                <select name="med1" class="form-select mt-3">
                                 <option value class="text-center">- Médicament n°1 présenté -</option>
                                 <?php
                                     foreach ($med as $medicament) {
@@ -120,7 +120,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <select required name="med2" class="form-select mt-3">
+                                <select name="med2" class="form-select mt-3">
                                 <option value class="text-center">- Médicament n°2 présenté -</option>
                                 <?php
                                     foreach ($med as $medicament) {
@@ -132,7 +132,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <select required name="echantillon" class="form-select mt-3">
+                                <select name="echantillon" class="form-select mt-3">
                                 <option value class="text-center">- Échantillon offert -</option>
                                 <?php
                                     foreach ($med as $medicament) {
@@ -145,7 +145,7 @@
                         <tr>
                             <td>
                                 <div>
-                                    <input type="number" id="quantite" name="quantite" min="1" max="5" value="0" />
+                                    <input type="number" id="quantite" name="quantite" min="0" max="5" value="0" />
                                     <label for="quantite">Quantité</label>
                                 </div><br>
                             </td>
@@ -172,17 +172,32 @@
     </div>
 </section>
 
-<!-- <<script>
-    const otherCheckbox = document.querySelector("autremotif");
-    const otherText = document.querySelector("autremotifV");
-    otherText.style.visibility = "hidden";
+<script>
+    const checkbox = document.querySelector("#autremotif");
+    const text = document.querySelector("#autremotifcontent");
 
-    otherCheckbox.addEventListener("change", () => {
-    if (otherCheckbox.checked) {
-        otherText.style.visibility = "visible";
-        otherText.value = "";
-    } else {
-        otherText.style.visibility = "hidden";
-    }
-    });
-</script>  -->
+    checkbox.addEventListener('click', () => {
+        if(text.classList.contains("d-none")){
+            text.classList.remove("d-none")
+            text.classList.add("d-block")
+        }
+        else{
+            text.classList.remove("d-block")
+            text.classList.add("d-none")
+        }
+  });
+
+    const list = document.querySelector("#remplacant");
+    const text = document.querySelector("#remplacantcontent");
+
+    list.addEventListener('click', () => {
+        if(text.classList.contains("d-none")){
+            text.classList.remove("d-none")
+            text.classList.add("d-block")
+        }
+        else{
+            text.classList.remove("d-block")
+            text.classList.add("d-none")
+        }
+  });
+</script> 
